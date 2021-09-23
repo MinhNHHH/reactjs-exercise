@@ -1,50 +1,57 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import NewOrder from '../NewOrder/NewOrder';
 
 import Order from '../Order/Order'
 import "./Home.css"
 
 
-const data = [
-    {
-        id: '1',
-        title: 'Math',
-        amount: 94.12,
-        date: new Date(2020, 7, 14),
-    },
-    { 
-        id: '2', 
-        title: 'Python in Nullsell', 
-        amount: 799.49, 
-        date: new Date(2021, 2, 12) 
-    },
-    {
-        id: '3',
-        title: 'NhaGiaKim',
-        amount: 294.67,
-        date: new Date(2021, 2, 28),
-    },
-    {
-        id: '4',
-        title: 'Tuoi20',
-        amount: 450,
-        date: new Date(2021, 5, 12),
-    },
-];
 
 export default function Home() {
-    const [orderList,setOrderList] = useState(data)
 
-    const addNewIntoList = (neworder) =>{
-        setOrderList((preNew) =>{
-            console.log(preNew)
-            return [neworder, ...preNew]
-        })
+    const [orderList, setOrderList] = useState([])
+    const [error, setError] = useState(null);
+    const fetchDataHandler = useCallback(async () => {
+        try {
+            const response = await fetch(process.env.REACT_APP_BASE_API+'/orders.json')
+            if (!response.ok) {
+                throw new Error('Something went wrong!');
+            }
+            const data = await response.json()
+            const loadData = []
+            for (const key in data) {
+                loadData.push({
+                    id: data[key].id,
+                    amount: data[key].amount,
+                    title: data[key].title,
+                    date: new Date(data[key].date)
+                })
+
+            }
+            setOrderList(loadData)
+        }
+        catch (error) {
+            setError(error.message)
+        }
+
+    }, [])
+    async function addDataHandler(order) {
+        const response = await fetch(process.env.REACT_APP_BASE_API+'/orders.json', {
+            method: 'POST',
+            body: JSON.stringify(order),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        console.log(data)
+        fetchDataHandler()
     }
+    useEffect(() => { fetchDataHandler() }, [fetchDataHandler])
     return (
-        <div className = "home-block">
-            <NewOrder onAddListOrder = {addNewIntoList}/>
-            <Order data = {orderList}/>
+        <div className="home-block">
+            <NewOrder onAddListOrder={addDataHandler} />
+            <Order data={orderList} />
+            {error && <p>{error}</p>}
         </div>
     )
 }
