@@ -1,0 +1,54 @@
+.PageLoginForm_body {
+    height: 350px;
+    width: 400px;
+    border-radius: 12px;
+    border-style: outset ;
+}
+
+.PageLoginForm_input {
+    width: 365px;
+    padding: 6px;
+}
+
+.PageLoginForm_input__text {
+    border: 1px solid #dddfe2;
+    font-size: 17px;
+    width: 350px;
+    padding: 14px 16px;
+    border-radius: 6px;
+}
+
+.PageLoginForm_input__btn {
+    width: 383px;
+    font-size: 30px;
+    border-radius: 6px;
+    background-color: #166fe5;
+    color: white;
+}
+
+.PageLoginForm_fp {
+    text-align: center;
+}
+
+.PageLoginForm_fp a {
+    text-decoration: none;
+    color: #166fe5;
+}
+
+.PageLoginForm_space {
+    border-bottom: 1px solid #dadde1;
+    display: flex;
+    margin: 20px 16px;
+}
+.PageLoginForm_register{
+    text-align: center;
+}
+.PageLoginForm_input__btn__register{
+    width: 180px;
+    font-size: 30px;
+    border-radius: 6px;
+    background-color: #36a420;
+    color: white;
+    
+    
+}
