@@ -24,7 +24,7 @@ function PageLogin(props) {
                 Well come to my webpage
             </h1>
             <div className = "block-pagelogin">
-                <img src = "https://formularapida.net/wp-content/uploads/2019/01/DxG7bOQXgAEul7l.jpg" width = "300px" height = "350px"/>
+                <img src = "https://formularapida.net/wp-content/uploads/2019/01/DxG7bOQXgAEul7l.jpg" width = "300px" height = "350px" alt ="MClarne"/>
                 <div className = "block_pagelogin__form">
                     <PageLoginForm 
                         setEnterEmail = {enterEmailHandel}

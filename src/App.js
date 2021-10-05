@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-
-
+import React, { useState } from 'react';
 import Home from './components/HomePage/Home';
 import PageLogin from './components/LoginPage/PageLogin';
 import MainHeader from './components/MainHeader/MainHeader';
