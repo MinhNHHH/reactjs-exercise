@@ -23,7 +23,7 @@ export default function NewOrderForm(props) {
             date: new Date(enterDate)
         }
         props.onSaveOrder(order)
-
+        props.hidden()
         setEnterTitle('')
         setEnterAmount('')
         setEnterDate('')

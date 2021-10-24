@@ -13,7 +13,7 @@ export default function NewOrder(props) {
     }
     return (
         <div className="new-order">
-            <NewOrderForm onSaveOrder={saveOrderData} />
+            <NewOrderForm onSaveOrder={saveOrderData} hidden = {props.onHiddenModal}/>
         </div>
     )
 }
